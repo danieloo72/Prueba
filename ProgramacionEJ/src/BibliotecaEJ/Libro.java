@@ -1,19 +1,20 @@
-package Biblioteca;
+package BibliotecaEJ;
 
 public class Libro {
-
+//Atributos
     protected String titulo;
     protected String autor;
     protected int ISBN;
     protected String genero;
     protected int año;
 
+    //Constructor
     public Libro(String titulo, String autor, int ISBN, String genero, int año) {
-        this.titulo = "IT";
-        this.autor = "Stephen King";
-        this.ISBN = 849759379;
-        this.genero = "Terror";
-        this.año = 2003;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.ISBN = ISBN;
+        this.genero = genero;
+        this.año = año;
     }
 
     public String getTitulo() {
@@ -56,14 +57,14 @@ public class Libro {
         this.año = año;
     }
 
-    public void mostrarInformacion(){
-        System.out.println("Titulo: " + this.titulo);
-        System.out.println("Autor: " + this.autor);
-        System.out.println("ISBN: " + this.ISBN);
-        System.out.println("Genero: " + this.genero);
-        System.out.println("Año: " + this.año);
-
-    }
+//    public static void mostrarInformacion(){
+//        System.out.println("Titulo: " + this.titulo);
+//        System.out.println("Autor: " + this.autor);
+//        System.out.println("ISBN: " + this.ISBN);
+//        System.out.println("Genero: " + this.genero);
+//        System.out.println("Año: " + this.año);
+//
+//    }
 
 }
 

@@ -1,4 +1,4 @@
-package Biblioteca;
+package BibliotecaEJ;
 
 import java.util.ArrayList;
 
@@ -37,7 +37,7 @@ public class Biblioteca {
     public void mostrarlibros(){
         System.out.println("Libros disponibles: ");
         for (Libro libro : libros) {
-            libro.mostrarInformacion();
+//            libro.mostrarInformacion();
         }
     }
 }
