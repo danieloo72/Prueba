@@ -57,14 +57,14 @@ public class Libro {
         this.año = año;
     }
 
-//    public static void mostrarInformacion(){
-//        System.out.println("Titulo: " + this.titulo);
-//        System.out.println("Autor: " + this.autor);
-//        System.out.println("ISBN: " + this.ISBN);
-//        System.out.println("Genero: " + this.genero);
-//        System.out.println("Año: " + this.año);
-//
-//    }
+    public void mostrarInformacion(){
+        System.out.println("Titulo: " + this.titulo);
+        System.out.println("Autor: " + this.autor);
+        System.out.println("ISBN: " + this.ISBN);
+        System.out.println("Genero: " + this.genero);
+        System.out.println("Año: " + this.año);
+
+    }
 
 }
 

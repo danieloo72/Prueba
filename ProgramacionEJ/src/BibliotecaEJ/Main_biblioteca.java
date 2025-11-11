@@ -26,27 +26,71 @@ public class Main_biblioteca {
             case 1:
                 System.out.println("Estos son los libros que tenemos.");
                 biblioteca.mostrarlibros();
-                break;
-            case 2:
-                for (int i = 0; i < libros.size(); i++) {
-                    System.out.println("Título: " + libros.get(i).getTitulo() + "   Autor: " + libros.get(i).getAutor() + "   ISBN: " + libros.get(i).getISBN() + "   Género: " + libros.get(i).getGenero() + "   Año: " + libros.get(i).getAño());
-                }
-                System.out.println("Que libro quieres dejar: ");
+                System.out.println("Que libro deseas coger: ");
                 int respuesta2 = sc.nextInt();
 
                 switch (respuesta2) {
                     case 1:
-                        libros.add(new Libro("It", "Stephen King", 849759379, "Terror", 2003));
+                        System.out.println("Has cogido el libro: ");
+                        libro.setTitulo("Dracula"); libro.setAutor("Bram Stoker"); libro.setISBN(97884272); libro.setGenero("Terror"); libro.setAño(1897);
+                        libro.mostrarInformacion();
+//                        libros.remove(libro("Drácula"));
+                        break;
                     case 2:
+                        System.out.println("Has cogido el libro: ");
+                        libro.setTitulo("Crónica de una muerte anunciada"); libro.setAutor("Gabriel García Márquez"); libro.setISBN(978014015); libro.setGenero("Realismo mágico"); libro.setAño(1981);
+                        libro.mostrarInformacion();
+                        break;
+                    case 3:
+                        System.out.println("Has cogido el libro: ");
+                        libro.setTitulo("El Juego de Ender"); libro.setAutor("Orson Scott Card"); libro.setISBN(978076537); libro.setGenero("Ciencia ficción"); libro.setAño(1985);
+                        libro.mostrarInformacion();
+                        break;
+                    case 4:
+                        System.out.println("Has cogido el libro: ");
+                        libro.setTitulo("Los Pilares de la Tierra"); libro.setAutor("Ken Follett"); libro.setISBN(978033351); libro.setGenero("Ficción histórica"); libro.setAño(1989);
+                        libro.mostrarInformacion();
+                        break;
+                    case 5:
+                        System.out.println("Has cogido el libro: ");
+                        libro.setTitulo("El Alquimista"); libro.setAutor("Paulo Coelho"); libro.setISBN(978006250); libro.setGenero("Aventura"); libro.setAño(1988);
+                        libro.mostrarInformacion();
+                        break;
+                    default:
+                        System.out.println("No se ha seleccionado una opción válida.");
+                }
+                break;
+            case 2:
+                biblioteca.dejarlibro();
+//                for (int i = 0; i < libros.size(); i++) {
+//                    System.out.println("Título: " + libros.get(i).getTitulo() + "   Autor: " + libros.get(i).getAutor() + "   ISBN: " + libros.get(i).getISBN() + "   Género: " + libros.get(i).getGenero() + "   Año: " + libros.get(i).getAño());
+//                }
+                System.out.println("Que libro quieres dejar: ");
+                int respuesta3 = sc.nextInt();
+
+                switch (respuesta3) {
+                    case 1:
+                        System.out.println("Has dejado el libro: ");
+                        libro.mostrarInformacion();
+                        libros.add(new Libro("It", "Stephen King", 849759379, "Terror", 2003));
+                        break;
+                    case 2:
+                        System.out.println("Has dejado el libro: ");
+                        libro.mostrarInformacion();
                         libros.add(new Libro("Cien años de soledad", "Gabriel García Márquez", 97884722, "Novela histórica", 1967));
+                        break;
                     case 3:
                         libros.add(new Libro("1984", "George Orwell", 97804522, "Ciencia ficción", 1949));
+                        break;
                     case 4:
                         libros.add(new Libro("La sombra del viento", "Carlos Ruiz Zafón", 978849509, "Thriller", 2001));
+                        break;
                     case 5:
                         libros.add(new Libro("El gran Gatsby", "F. Scott Fitzgerald", 978074327, "Ficción clásica", 1925));
+                        break;
                     case 6:
                         libros.add(new Libro("Matar a un ruiseñor", "Harper Lee", 978006112, "Drama", 1960));
+                        break;
                     default:
                         System.out.println("Error, esa opción no existe.");
                 }
