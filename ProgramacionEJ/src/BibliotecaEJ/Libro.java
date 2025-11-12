@@ -1,7 +1,7 @@
 package BibliotecaEJ;
 
 public class Libro {
-//Atributos
+    //Atributos
     protected String titulo;
     protected String autor;
     protected int ISBN;
@@ -57,14 +57,13 @@ public class Libro {
         this.año = año;
     }
 
-    public void mostrarInformacion(){
-        System.out.println("Titulo: " + this.titulo);
+    public void mostrarInformacion() {
+        System.out.println("Título: " + this.titulo);
         System.out.println("Autor: " + this.autor);
         System.out.println("ISBN: " + this.ISBN);
         System.out.println("Genero: " + this.genero);
         System.out.println("Año: " + this.año);
 
     }
-
 }
 
