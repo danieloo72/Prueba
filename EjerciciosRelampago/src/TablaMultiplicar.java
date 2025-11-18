@@ -8,7 +8,6 @@ public class TablaMultiplicar {
         int numero = sc.nextInt();
 
         for (int i = 1; i <= 10; i++) {
-            // 8 por 2 es: 16
             System.out.println(numero + " × " + i + " = " + numero * i);
         }
     }
