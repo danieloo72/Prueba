@@ -8,6 +8,7 @@
         elemento.add("Elemento 1");
         elemento.add("Elemento 2");
         elemento.add("Elemento 3");
+```
 ##### Descripción
 `Es una estructura de datos que representa una lista de elementos redimensionable, su tamaño puede cambiar dinámicamente durante la ejecución del programa.`
 
@@ -80,3 +81,4 @@
 ##### Descripción
 
 `Almacena sus pares de clave-valor siguiendo un orden específico.`
+
