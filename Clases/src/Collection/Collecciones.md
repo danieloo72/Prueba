@@ -1,4 +1,4 @@
-# **Collecciones**
+# **Colecciones**
 
 ## **List**
 ### ArrayList
