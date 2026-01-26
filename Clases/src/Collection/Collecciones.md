@@ -32,6 +32,7 @@
         elemento3.add("Elemento 1");
         elemento3.add("Elemento 2");
         elemento3.add("Elemento 3");
+```
 ##### Descripción
 `Es una colección que almacena elementos únicos y no garantiza ningún orden específico.`
 
@@ -93,5 +94,6 @@
 ```
 ##### Descripción
 `Almacena sus pares de clave-valor siguiendo un orden específico.`
+
 
 
