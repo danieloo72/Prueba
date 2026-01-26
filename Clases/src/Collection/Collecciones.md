@@ -3,6 +3,7 @@
 ## **List**
 ### ArrayList
 #### Código
+```JAVA
         List<String> elemento = new ArrayList<>();
         elemento.add("Elemento 1");
         elemento.add("Elemento 2");
@@ -77,4 +78,5 @@
         elemento8.put("Elemento 2", 2);
         elemento8.put("Elemento 3", 3);
 ##### Descripción
+
 `Almacena sus pares de clave-valor siguiendo un orden específico.`
