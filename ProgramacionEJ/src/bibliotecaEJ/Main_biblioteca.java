@@ -1,13 +1,12 @@
-package BibliotecaEJ;
+package bibliotecaEJ;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main_biblioteca {
     public static void main(String[] args) {
 
         Biblioteca biblioteca = new Biblioteca("JaiserYT", 101);
-        Libro libro = new Libro(titulo, "Stephen King", 849759379, "Terror", 2003);
+        Libro libro = new Libro("titulo", "Stephen King", 849759379, "Terror", 2003);
 
         biblioteca.añadirlibro((new Libro("Drácula", "Bram Stoker", 97884272, "Terror", 1897)));
         biblioteca.añadirlibro((new Libro("Crónica de una Muerte Anunciada", "Gabriel García Márquez", 978014015, "Realismo mágico", 1981)));
@@ -33,8 +32,10 @@ public class Main_biblioteca {
                 case 1:
                     System.out.println("Estos son los libros que tenemos.");
                     for (int i = 0; i < biblioteca.getLibros().size(); i++) {
-                        System.out.println("Título: " + biblioteca.getLibros().get(i).getTitulo() + "   Autor: " + biblioteca.getLibros().get(i).getAutor() + "   ISBN: " + biblioteca.getLibros().get(i).getISBN() + "   Género: " + biblioteca.getLibros().get(i).getGenero() + "   Año: " + biblioteca.getLibros().get(i).getAño());
+                        Libro libro2 = biblioteca.getLibros().get(i);
+                        System.out.println("Título: " + libro2.getTitulo() + "   Autor: " + libro2.getAutor() + "   ISBN: " + libro2.getISBN() + "   Género: " + libro2.getGenero() + "   Año: " + libro2.getAño());
                     }
+
                     System.out.print("Que libro deseas coger: ");
                     // Mostrar los titulos de los libros que tienes en  biblioteca. Cuando lo encuentres o elijas, pilla solo ese y  paretir de ahi lo manejas
                     int respuesta2 = sc.nextInt();

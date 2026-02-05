@@ -1,0 +1,5 @@
+Juan Pérez,Matemáticas,75
+María García,Física,82
+Carlos López,Química,68
+Ana Martínez,Historia,91
+Luis Rodríguez,Programación,88

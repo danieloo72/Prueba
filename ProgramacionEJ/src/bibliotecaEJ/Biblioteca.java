@@ -1,4 +1,4 @@
-package BibliotecaEJ;
+package bibliotecaEJ;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package BibliotecaEJ;
+package bibliotecaEJ;
 
 public class Libro {
     //Atributos
