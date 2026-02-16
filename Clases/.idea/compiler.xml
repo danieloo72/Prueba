@@ -7,6 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ClaseJSON" />
+        <module name="DogAPI" />
+        <module name="Pokemon" />
         <module name="Multidimensionales" />
       </profile>
     </annotationProcessing>

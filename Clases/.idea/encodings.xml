@@ -3,11 +3,15 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/ClasesJSON/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ClasesJSON/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DogAPI/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/DogAPI/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/JSON/Multidimensionales/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/JSON/Multidimensionales/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/JSON/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/JSON/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Multidimensionales/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Multidimensionales/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Pokemon/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Pokemon/src/main/resources" charset="UTF-8" />
   </component>
 </project>
