@@ -1,6 +1,4 @@
-package org.example;
-
-import controllers.DogsController;
+package org.example.clases;
 
 import java.util.List;
 

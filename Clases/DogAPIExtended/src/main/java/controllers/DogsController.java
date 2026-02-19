@@ -1,5 +1,6 @@
 package controllers;
 
+import com.google.gson.JsonObject;
 import com.sun.net.httpserver.HttpExchange;
 
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.net.http.HttpResponse;
 public class DogsController {
 
     private final HttpClient client = HttpClient.newHttpClient();
+    private JsonObject json = new JsonObject();
 
     public void handle(HttpExchange exchange) throws IOException {
 
@@ -21,6 +23,11 @@ public class DogsController {
 
             String apiUrl;
 
+            if (json.length < 1) {
+                for (JsonObject list : json) {
+                    System.out.println(list);
+                }
+            }
             if (path.equals("/dogs/list")) {
                 apiUrl = "https://dog.ceo/api/breeds/list/all";
             }
