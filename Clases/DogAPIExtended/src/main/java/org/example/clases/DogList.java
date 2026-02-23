@@ -5,6 +5,7 @@ import java.util.List;
 public class DogList {
 
     private String nombre;
+    private
     private List<String> img;
 
     public DogList(String nombre, List<String> img) {

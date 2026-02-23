@@ -1,7 +1,9 @@
 package controllers;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.sun.net.httpserver.HttpExchange;
+import org.example.HttpClientDog;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -13,7 +15,7 @@ import java.net.http.HttpResponse;
 public class DogsController {
 
     private final HttpClient client = HttpClient.newHttpClient();
-    private JsonObject json = new JsonObject();
+    private HttpClientDog httpClientDog;
 
     public void handle(HttpExchange exchange) throws IOException {
 
@@ -23,13 +25,18 @@ public class DogsController {
 
             String apiUrl;
 
-            if (json.length < 1) {
-                for (JsonObject list : json) {
-                    System.out.println(list);
-                }
-            }
             if (path.equals("/dogs/list")) {
                 apiUrl = "https://dog.ceo/api/breeds/list/all";
+                HttpRequest request = HttpRequest.newBuilder().uri(URI.create(apiUrl)).GET().build();
+                // Nos devuelve el json de la APIDOG
+                HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+                System.out.println(response.body());
+
+                // Procesar el json
+                JsonObject resultado = HttpClientDog.getDogList(response.body());
+
+                // Enviar la respuesta de la petición
+                sendResponse(exchange, 200, resultado.toString());
             }
             else if (path.equals("/dogs/random")) {
                 apiUrl = "https://dog.ceo/api/breeds/image/random";
