@@ -2,36 +2,21 @@ package org.example;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import org.example.clases.DogList;
-import org.example.clases.DogListResponse;
 
 import java.io.IOException;
-import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.util.List;
 
 public class HttpClientDog {
 
     // Cliente HTTP
     private final HttpClient client = HttpClient.newHttpClient();
+    private final static Gson gson = new Gson();
+    private static JsonObject json = new JsonObject();
+    private static JsonArray lista = new JsonArray();
 
     public static JsonObject getDogList(String response) throws IOException, InterruptedException {
-
-             // Parseo del JSON
-        Gson gson = new Gson();
-
-        JsonObject json = new JsonObject();
-        JsonArray lista = new JsonArray();
-
-//        JsonObject obj1 = new JsonObject();
-//        obj1.addProperty("nombre: ", url);
-//        lista.add(obj1);
-//
-//        JsonObject obj2 = new JsonObject();
-//        obj2.addProperty("imagenes: ", url1);
 
         JsonObject jsonRaiz = gson.fromJson(response, JsonObject.class);
         JsonObject message = jsonRaiz.getAsJsonObject("message");
@@ -47,8 +32,21 @@ public class HttpClientDog {
         return json;
     }
 
+
     public static JsonObject getSubRaza(String response) throws IOException, InterruptedException {
 
-        JsonObject jsonRaiz = gson.from(response, JsonObject.class);
+        JsonObject JsonRoot = gson.fromJson(response, JsonObject.class);
+
+        JsonObject mensaje = JsonRoot.getAsJsonObject();
+        System.out.println(mensaje);
+        for(String subraza : mensaje.keySet()){
+            JsonArray obj2 = new JsonArray();
+            obj2.addProperty("subraza: ", subraza);
+            lista.add(obj2);
+        }
+        json.add("nombre",lista);
+        System.out.println(json);
+
+        return json;
     }
 }

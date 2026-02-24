@@ -5,10 +5,10 @@ import java.util.List;
 public class DogList {
 
     private String nombre;
-    private
+    private String subraza;
     private List<String> img;
 
-    public DogList(String nombre, List<String> img) {
+    public DogList(String nombre, String subraza, List<String> img) {
         this.nombre = nombre;
         this.img = img;
     }

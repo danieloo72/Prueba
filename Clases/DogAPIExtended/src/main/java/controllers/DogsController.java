@@ -34,9 +34,11 @@ public class DogsController {
 
                 // Procesar el json
                 JsonObject resultado = HttpClientDog.getDogList(response.body());
+                JsonObject result = HttpClientDog.getSubRaza(response.body());
 
                 // Enviar la respuesta de la petición
                 sendResponse(exchange, 200, resultado.toString());
+                sendResponse(exchange, 200, result.toString());
             }
             else if (path.equals("/dogs/random")) {
                 apiUrl = "https://dog.ceo/api/breeds/image/random";
