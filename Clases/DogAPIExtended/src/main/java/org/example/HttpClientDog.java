@@ -2,7 +2,6 @@ package org.example;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import java.io.IOException;
@@ -36,15 +35,14 @@ public class HttpClientDog {
     public static JsonObject getSubRaza(String response) throws IOException, InterruptedException {
 
         JsonObject JsonRoot = gson.fromJson(response, JsonObject.class);
-
-        JsonObject mensaje = JsonRoot.getAsJsonObject();
+        JsonObject mensaje = JsonRoot.getAsJsonObject("message");
         System.out.println(mensaje);
         for(String subraza : mensaje.keySet()){
-            JsonArray obj2 = new JsonArray();
+            JsonObject obj2 = new JsonObject();
             obj2.addProperty("subraza: ", subraza);
             lista.add(obj2);
         }
-        json.add("nombre",lista);
+        lista.add(lista);
         System.out.println(json);
 
         return json;
