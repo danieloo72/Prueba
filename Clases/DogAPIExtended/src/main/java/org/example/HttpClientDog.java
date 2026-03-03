@@ -9,42 +9,30 @@ import java.net.http.HttpClient;
 
 public class HttpClientDog {
 
-    // Cliente HTTP
-    private final HttpClient client = HttpClient.newHttpClient();
     private final static Gson gson = new Gson();
     private static JsonObject json = new JsonObject();
     private static JsonArray lista = new JsonArray();
+    private static JsonArray sublista = new JsonArray();
 
     public static JsonObject getDogList(String response) throws IOException, InterruptedException {
 
         JsonObject jsonRaiz = gson.fromJson(response, JsonObject.class);
         JsonObject message = jsonRaiz.getAsJsonObject("message");
-        System.out.println(message);
+
+        JsonObject jsonSubRazas = new  JsonObject();
+        JsonArray listaSubrazas = new JsonArray();
+
         for(String raza : message.keySet()){
-            JsonObject obj1 = new JsonObject();
-            obj1.addProperty("nombre: ", raza);
-            lista.add(obj1);
+            JsonArray subrazas = message.getAsJsonArray(raza);
+            if (subrazas != null && subrazas.size() > 0) {
+                JsonObject obj = new JsonObject();
+                obj.addProperty("nombre", raza);
+                obj.add("subrazas", subrazas);
+                listaSubrazas.add(obj);
+            }
         }
-        json.add("Perros",lista);
-        System.out.println(json);
 
-        return json;
-    }
-
-
-    public static JsonObject getSubRaza(String response) throws IOException, InterruptedException {
-
-        JsonObject JsonRoot = gson.fromJson(response, JsonObject.class);
-        JsonObject mensaje = JsonRoot.getAsJsonObject("message");
-        System.out.println(mensaje);
-        for(String subraza : mensaje.keySet()){
-            JsonObject obj2 = new JsonObject();
-            obj2.addProperty("subraza: ", subraza);
-            lista.add(obj2);
-        }
-        lista.add(lista);
-        System.out.println(json);
-
-        return json;
+        jsonSubRazas.add("Subrazas", listaSubrazas);
+        return jsonSubRazas;
     }
 }

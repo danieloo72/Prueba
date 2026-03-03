@@ -1,5 +1,6 @@
 package controllers;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.sun.net.httpserver.HttpExchange;
 import org.example.HttpClientDog;
@@ -10,10 +11,6 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.HashMap;
-import java.util.Map;
-
-import static org.example.HttpClientDog.gson;
 
 public class DogsController {
 
@@ -27,50 +24,71 @@ public class DogsController {
 
             String apiUrl;
 
-            if (path.equals("/dogs/subrazas")) {
+            if (path.equals("/dogs/list")) {
+                apiUrl = "https://dog.ceo/api/breeds/list/all";
+                HttpRequest request = HttpRequest.newBuilder(URI.create(apiUrl)).GET().build();
+
+                HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+                System.out.println(response.body());
+
+
+                sendResponse(exchange, 200, response.body());
+                return;
+            }
+
+            if (path.equals("/dogs/subRazas")) {
                 apiUrl = "https://dog.ceo/api/breeds/list/all";
                 HttpRequest request = HttpRequest.newBuilder(URI.create(apiUrl)).GET().build();
 
                 HttpResponse<String> reponse = client.send(request, HttpResponse.BodyHandlers.ofString());
                 System.out.println(reponse.body());
-            }
 
-            if (path.equals("/dogs/list")) {
-                apiUrl = "https://dog.ceo/api/breeds/list/all";
-                String apiUrl1 = "https://dog.ceo/api/breed/hound/list";
-                HttpRequest request = HttpRequest.newBuilder().uri(URI.create(apiUrl)).GET().build();
-                // Nos devuelve el json de la APIDOG
-                HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-                System.out.println(response.body());
+                JsonObject result = HttpClientDog.getDogList(reponse.body());
 
-                // Procesar el json
-                JsonObject resultado = HttpClientDog.getDogList(response.body());
-
-                HttpRequest request1 = HttpRequest.newBuilder().uri(URI.create(apiUrl1)).GET().build();
-                // Nos devuelve el json de la APIDOG
-                HttpResponse<String> response1 = client.send(request, HttpResponse.BodyHandlers.ofString());
-                System.out.println(response1.body());
-
-                JsonObject result = HttpClientDog.getSubRaza(response.body());
-
-                // Enviar la respuesta de la petición
-                sendResponse(exchange, 200, resultado.toString());
                 sendResponse(exchange, 200, result.toString());
-            }
-
-            else if (path.equals("/dogs/random")) {
-                apiUrl = "https://dog.ceo/api/breeds/image/random";
-            }
-            else {
-                sendResponse(exchange, 404, "Endpoint dogs no válido");
                 return;
             }
 
-            HttpRequest request = HttpRequest.newBuilder().uri(URI.create(apiUrl)).GET().build();
+            if (path.equals("/dogs/random")) {
+                apiUrl = "https://dog.ceo/api/breeds/image/random";
+                HttpRequest request = HttpRequest.newBuilder(URI.create(apiUrl)).GET().build();
 
-            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+                HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+                System.out.println(response.body());
 
-            sendResponse(exchange, 200, response.body());
+
+                sendResponse(exchange, 200, response.body());
+                return;
+
+            }
+
+            if (path.equals("/dogs/random5")) {
+                apiUrl = "https://dog.ceo/api/breeds/image/random/5";
+                HttpRequest request = HttpRequest.newBuilder(URI.create(apiUrl)).GET().build();
+
+                HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+                System.out.println(response.body());
+
+                sendResponse(exchange, 200, response.body());
+                return;
+            }
+
+            if (path.equals("/dogs/random/")) {
+                apiUrl = "https://dog.ceo/api/breeds/image/random/";
+                if (path.endsWith("/")) {
+
+
+                }
+                HttpRequest request = HttpRequest.newBuilder(URI.create(apiUrl)).GET().build();
+
+                HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+                System.out.println(response.body());
+
+                sendResponse(exchange, 200, response.body());
+                return;
+            }
+
+            sendResponse(exchange, 404, "Endpoint dogs no válido");
 
         } catch (Exception e) {
             sendResponse(exchange, 500, "Error llamando a la API dogs");
