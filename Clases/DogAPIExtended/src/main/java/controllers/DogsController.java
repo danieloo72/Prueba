@@ -17,9 +17,7 @@ public class DogsController {
     private final HttpClient client = HttpClient.newHttpClient();
 
     public void handle(HttpExchange exchange) throws IOException {
-
         String path = exchange.getRequestURI().getPath();
-
         try {
 
             String apiUrl;
@@ -40,10 +38,10 @@ public class DogsController {
                 apiUrl = "https://dog.ceo/api/breeds/list/all";
                 HttpRequest request = HttpRequest.newBuilder(URI.create(apiUrl)).GET().build();
 
-                HttpResponse<String> reponse = client.send(request, HttpResponse.BodyHandlers.ofString());
-                System.out.println(reponse.body());
+                HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+                System.out.println(response.body());
 
-                JsonObject result = HttpClientDog.getDogList(reponse.body());
+                JsonObject result = HttpClientDog.getDogList(response.body());
 
                 sendResponse(exchange, 200, result.toString());
                 return;
@@ -73,18 +71,9 @@ public class DogsController {
                 return;
             }
 
-            if (path.equals("/dogs/random/")) {
-                apiUrl = "https://dog.ceo/api/breeds/image/random/";
-                if (path.endsWith("/")) {
-
-
-                }
-                HttpRequest request = HttpRequest.newBuilder(URI.create(apiUrl)).GET().build();
-
-                HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-                System.out.println(response.body());
-
-                sendResponse(exchange, 200, response.body());
+            if (path.startsWith("/dogs/img/")) {
+                    String response = HttpClientDog.getImages(path, client);
+                    sendResponse(exchange, 200, response);
                 return;
             }
 
